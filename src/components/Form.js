@@ -15,6 +15,8 @@ class Form extends Component {
         }
     }
 
+    
+
     handleq = (event) =>{
         this.setState({
             q:event.target.value
@@ -57,10 +59,30 @@ class Form extends Component {
         });
     }
 
+           
+
+
     handleSubmit = (event) =>{
+
+        const getRecipie = async () => {
+            const response = await fetch(
+                `https://api.edamam.com/search?q=chicken&app_id=2212ac86&app_key=c15684e291aa4073912e4c99dec07227`
+                );
+                const data  = await response.json();
+                console.log(data.hits);
+    
+    
+            }
+            
         event.preventDefault();
-        alert(`${this.state.q}`)
-    }
+  
+        getRecipie();
+
+
+        }
+
+    
+
 
 render(){
     return (<div>
