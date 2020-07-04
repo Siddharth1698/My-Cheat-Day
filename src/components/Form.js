@@ -70,23 +70,7 @@ const Form = () =>{
       const restdata  = await restd.json();
       console.log(restdata);
       setRestaurants(restdata.restaurants)
-    
-      if(restdata.restaurants[0].restaurant.name){
-        setrest1(restdata.restaurants[0].restaurant.name);
-      } else{
-        setrest1("");
-      }
-      if(restdata.restaurants[1].restaurant.name){
-        setrest2(restdata.restaurants[1].restaurant.name);
-        } else{
-          setrest2("");
-        }
-        if(restdata.restaurants[2].restaurant.name){
-          setrest3(restdata.restaurants[2].restaurant.name);
-          } else{
-            setrest3("");
-          }
-         
+   
 
  
  
@@ -198,8 +182,14 @@ key={recipe.recipe.label}
 
 <Restaurant 
 
-key={restaurant.restaurant.name} 
+ key={restaurant.restaurant.name} 
  title={restaurant.restaurant.name} 
+ hlink = {restaurant.restaurant.menu_url}
+ phno = {restaurant.restaurant.phone_numbers} 
+ rating = {restaurant.restaurant.user_rating.aggregate_rating}
+ cuisines = {restaurant.restaurant.cuisines}
+ address = {restaurant.restaurant.location.address}
+ locality_verbose = {restaurant.restaurant.location.locality_verbose}
  
  />
 
