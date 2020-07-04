@@ -8,6 +8,7 @@ const Form = () =>{
     const APP_ID = '2212ac86';
     const APP_KEY = 'c15684e291aa4073912e4c99dec07227';
   
+      const [restaurants,setRestaurants] = useState([]);
       const [recipes,setRecepes] = useState([]);
       const [search, setSearch] = useState("");
       const [query, setQuery] = useState('');
@@ -19,7 +20,29 @@ const Form = () =>{
       const [excluded, setexcluded] = useState("");
       const [rest1, setrest1] = useState("");
       const [rest2, setrest2] = useState("");
+      const [rest3, setrest3] = useState("");
+
+      var lat = 0;
+      var long = 0;
+
+      function showPosition(position) {
+        lat =  position.coords.latitude;
+        long = position.coords.longitude;
+      }
+
+      navigator.geolocation.getCurrentPosition(showPosition);
     
+      
+
+
+    
+
+      const StyleObject = {
+        
+        "height" : "50px",
+        "width" : "150px"
+        
+  }
   
       useEffect(() => {
          getRecipie();
@@ -35,8 +58,10 @@ const Form = () =>{
         setRecepes(data.hits)
       }
 
+
+
       const restClicked = async () => {
-        const restd = await fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=11298&entity_type=city&q=${query}&lat=10.5276&lon=76.2144`, {
+        const restd = await fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=11298&entity_type=city&q=${query}&lat=${lat}&lon=${long}`, {
           headers: {
             Accept: "application/json",
             "User-Key": "d45ea1866082729c2bc792dc2a1b4fe3"
@@ -44,17 +69,27 @@ const Form = () =>{
         });
       const restdata  = await restd.json();
       console.log(restdata);
+      setRestaurants(restdata.restaurants)
     
-      var rest1 = restdata.restaurants[0].restaurant.name;
-      var rest2 = restdata.restaurants[1].restaurant.name;
-      setrest1(rest1);
-      setrest2(rest2);
-      console.log(rest1);
-      console.log(rest2);
+      if(restdata.restaurants[0].restaurant.name){
+        setrest1(restdata.restaurants[0].restaurant.name);
+      } else{
+        setrest1("");
+      }
+      if(restdata.restaurants[1].restaurant.name){
+        setrest2(restdata.restaurants[1].restaurant.name);
+        } else{
+          setrest2("");
+        }
+        if(restdata.restaurants[2].restaurant.name){
+          setrest3(restdata.restaurants[2].restaurant.name);
+          } else{
+            setrest3("");
+          }
+         
 
-     
-
-      
+ 
+ 
 
       }
       //
@@ -70,6 +105,9 @@ const Form = () =>{
         setQuery(search);
        
       }
+
+     
+  
   
 
  
@@ -128,11 +166,10 @@ const Form = () =>{
 </div>
 
 <div className="text-center" >
-<button className="btn-dark" type="submit" className="btn btn-default">Submit</button>
+<button className="btn" type="submit">Submit</button>
 </div>
 </form>
 
-< button onClick={restClicked} value="Restaurents" className="btn btn-dark" />
 
 
 
@@ -145,13 +182,34 @@ key={recipe.recipe.label}
  calories={recipe.recipe.calories} 
  image={recipe.recipe.image}
  ingredients={recipe.recipe.ingredients}
+ 
  />
 
 )
 
 )};
 
-<div>  <h1>{rest1} </h1>  <br/> <h1>{rest2}</h1></div>
+< button onClick={restClicked} value="Restaurents" className="btn"  style={StyleObject}>Restaurents</ button>
+
+{restaurants.map(restaurant =>  (
+
+  
+
+
+<Restaurant 
+
+key={restaurant.restaurant.name} 
+ title={restaurant.restaurant.name} 
+ 
+ />
+
+)
+
+)};
+
+
+
+
 
 
 

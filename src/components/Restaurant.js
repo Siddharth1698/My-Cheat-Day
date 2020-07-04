@@ -2,14 +2,14 @@ import React from 'react';
 
 import ButtonComponent from './ButtonComponent';
 
-const Restaurant =({title1,title2}) => {
+const Restaurant =({title}) => {
 
     
 
     return (
-    <div className="eachRecipe">
-        <h1>{title1}</h1>
-        <h1>{title2}</h1>
+    <div>
+        <h1>here is {title}</h1>
+        
 
 
     </div>
