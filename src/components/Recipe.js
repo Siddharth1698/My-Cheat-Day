@@ -1,7 +1,11 @@
 import React from 'react';
 import './Recipe.css';
+import ButtonComponent from './ButtonComponent';
 
 const Recipe =({title,calories,image, ingredients}) => {
+
+    
+
     return (
     <div className="eachRecipe">
         <h1>{title}</h1>
@@ -13,11 +17,14 @@ const Recipe =({title,calories,image, ingredients}) => {
         </ol>
     <p>{calories}</p>
     <img src={image} />
+
+    < ButtonComponent />
     </div>
         
         
         
         );
+       
 }
 
 export default Recipe;

@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import Recipe from './Recipe';
+import ButtonComponent from './ButtonComponent';
 
 
 const Form = () =>{
@@ -28,8 +29,23 @@ const Form = () =>{
           );
         const data  = await response.json();
         setRecepes(data.hits)
+
+
+        const restd = await fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=11298&entity_type=city&q=${query}&lat=10.5276&lon=76.2144`, {
+          headers: {
+            Accept: "application/json",
+            "User-Key": "d45ea1866082729c2bc792dc2a1b4fe3"
+          }
+        });
+      const restdata  = await restd.json();
+      console.log(restdata);
+
   
       }
+
+      //
+
+    //
   
       const updateSearch = e =>{
         setSearch(e.target.value)
@@ -114,10 +130,12 @@ key={recipe.recipe.label}
  image={recipe.recipe.image}
  ingredients={recipe.recipe.ingredients}
  />
+
 )
 
 )};
 
+< ButtonComponent />
 
     </div>);
 
