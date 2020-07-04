@@ -18,7 +18,7 @@ const Recipe =({title,calories,image, ingredients}) => {
     <p>{calories}</p>
     <img src={image} />
 
-    < ButtonComponent />
+
     </div>
         
         

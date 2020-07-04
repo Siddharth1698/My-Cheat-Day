@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ButtonComponent = () => {
+const ButtonComponent = (props) => {
 
 
 
 return (<div>
-   <button>Search for Restaurants</button>
+   <button>{props.buttonText}</button>
 </div>);
 }
 

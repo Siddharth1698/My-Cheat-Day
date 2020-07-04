@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import Recipe from './Recipe';
-import ButtonComponent from './ButtonComponent';
+import Restaurant from './Restaurant';
+
 
 
 const Form = () =>{
@@ -16,6 +17,8 @@ const Form = () =>{
       const [health, sethealth] = useState("");
       const [cuisine, setcuisine] = useState("");
       const [excluded, setexcluded] = useState("");
+      const [rest1, setrest1] = useState("");
+      const [rest2, setrest2] = useState("");
     
   
       useEffect(() => {
@@ -28,9 +31,11 @@ const Form = () =>{
           
           );
         const data  = await response.json();
+        console.log(data);
         setRecepes(data.hits)
+      }
 
-
+      const restClicked = async () => {
         const restd = await fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=11298&entity_type=city&q=${query}&lat=10.5276&lon=76.2144`, {
           headers: {
             Accept: "application/json",
@@ -39,10 +44,19 @@ const Form = () =>{
         });
       const restdata  = await restd.json();
       console.log(restdata);
+    
+      var rest1 = restdata.restaurants[0].restaurant.name;
+      var rest2 = restdata.restaurants[1].restaurant.name;
+      setrest1(rest1);
+      setrest2(rest2);
+      console.log(rest1);
+      console.log(rest2);
 
-  
+     
+
+      
+
       }
-
       //
 
     //
@@ -118,6 +132,8 @@ const Form = () =>{
 </div>
 </form>
 
+< button onClick={restClicked} value="Restaurents" className="btn btn-dark" />
+
 
 
 {recipes.map(recipe =>  (
@@ -135,7 +151,12 @@ key={recipe.recipe.label}
 
 )};
 
-< ButtonComponent />
+<div>  <h1>{rest1} </h1>  <br/> <h1>{rest2}</h1></div>
+
+
+
+
+
 
     </div>);
 
