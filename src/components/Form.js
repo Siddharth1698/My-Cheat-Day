@@ -1,6 +1,5 @@
 import React,{useEffect, useState} from 'react';
 import Recipe from './Recipe';
-import ImageList from './ImageList';
 
 
 const Form = () =>{
@@ -98,7 +97,7 @@ const Form = () =>{
 />
 </div>
 
-<div  >
+<div className="text-center" >
 <button className="btn-dark" type="submit" className="btn btn-default">Submit</button>
 </div>
 </form>
