@@ -14,7 +14,8 @@ const Form = () =>{
       const [calories, setCalories] = useState("");
       const [mealtype, setmealtype] = useState("");
       const [health, sethealth] = useState("");
-      
+      const [cuisine, setcuisine] = useState("");
+      const [excluded, setexcluded] = useState("");
     
   
       useEffect(() => {
@@ -23,7 +24,7 @@ const Form = () =>{
   
       const getRecipie = async () => {
         const response = await fetch(
-          `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=3&calories=0-${calories}&meal=Dinner&Health=${health}-free&Diet=${diet}`
+          `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=5&calories=0-${calories}&meal=${mealtype}&cuisine=${cuisine}&Health=${health}-free&Diet=${diet}&excluded=${excluded}`
           
           );
         const data  = await response.json();
@@ -38,7 +39,7 @@ const Form = () =>{
       const getSearch = e => {
         e.preventDefault();
         setQuery(search);
-        setSearch("")
+       
       }
   
 
@@ -77,14 +78,16 @@ const Form = () =>{
 </div>
 
 <div className="form-group">
-  <label htmlFor="dishType">Any particular dish type:</label>
-  <input type="text" className="form-control" id="dishType" placeholder="Enter text" name="dishType"
+  <label htmlFor="cuisineType">Any particular cuisine type:</label>
+  <input type="text" className="form-control" id="cuisineType" placeholder="Enter text" name="cuisineType"
+   onChange={e => setcuisine(e.target.value)}  value={cuisine}
 />
 </div>
 
 <div className="form-group">
   <label htmlFor="excluded">Do you want to exclude any food:</label>
   <input type="text" className="form-control" id="excluded" placeholder="Enter text" name="excluded"
+    onChange={e => setexcluded(e.target.value)}  value={excluded}
   />
 </div>
 
