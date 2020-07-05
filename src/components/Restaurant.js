@@ -11,11 +11,11 @@ const Restaurant =({title,hlink,phno,rating,cuisines,address,locality_verbose}) 
     <div className="eachRecipe">
         
       <a href={hlink} ><h3 >{title} </h3></a>  <br/>
-    <p>Phone number: {phno}</p><br/>
-      <p>Rating: {rating}</p><br/>
-      <p>Cusines:{cuisines}</p><br/>
-      <p>Address: {address}</p><br/>
-      <p>Locality: {locality_verbose}</p><br/>
+    <p><b>Phone number:</b> {phno}</p><br/>
+      <p><b>Rating:</b> {rating}</p><br/>
+      <p><b>Cusines:</b> {cuisines}</p><br/>
+      <p><b>Address: </b>{address}</p><br/>
+      <p><b>Locality:</b> {locality_verbose}</p><br/>
         
 
 
