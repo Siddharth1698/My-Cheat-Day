@@ -61,7 +61,7 @@ const Form = () =>{
 
 
       const restClicked = async () => {
-        const restd = await fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=11298&entity_type=city&q=${query}&lat=${lat}&lon=${long}`, {
+        const restd = await fetch(`https://developers.zomato.com/api/v2.1/search?q=${query}&lat=${lat}&lon=${long}`, {
           headers: {
             Accept: "application/json",
             "User-Key": "d45ea1866082729c2bc792dc2a1b4fe3"
