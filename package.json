@@ -14,13 +14,10 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "serve -s build",
-"build": "react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "react-scripts start",
-
-"heroku-postbuild": "npm run build"
+    "eject": "react-scripts eject"
     
   },
   "eslintConfig": {
