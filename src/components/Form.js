@@ -166,6 +166,13 @@ key={recipe.recipe.label}
  calories={recipe.recipe.calories} 
  image={recipe.recipe.image}
  ingredients={recipe.recipe.ingredients}
+ source={recipe.recipe.source}
+ yields={recipe.recipe.yield}
+ totalWeight={recipe.recipe.totalWeight}
+ totalNutrients={recipe.recipe.totalNutrients}
+ totalDaily={recipe.recipe.totalDaily}
+ dietLabels={recipe.recipe.dietLabels}
+ healthLabels={recipe.recipe.healthLabels}
  
  />
 
@@ -190,6 +197,7 @@ key={recipe.recipe.label}
  cuisines = {restaurant.restaurant.cuisines}
  address = {restaurant.restaurant.location.address}
  locality_verbose = {restaurant.restaurant.location.locality_verbose}
+ 
  
  />
 
